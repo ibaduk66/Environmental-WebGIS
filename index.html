@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Live weather monitoring for Islamabad and Rawalpindi using Open-Meteo.">
+  <title>Weather Monitor | Islamabad &amp; Rawalpindi</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">WEB GIS · WEATHER MONITOR</p>
+      <h1>Weather Monitor</h1>
+      <p class="subtitle">Current conditions across Islamabad and Rawalpindi</p>
+    </div>
+    <button id="refresh" class="refresh-button" type="button">Refresh weather</button>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Weather locations and filters">
+      <section class="study-area">
+        <h2>Study area</h2>
+        <p>Compare current weather at selected locations across the Islamabad–Rawalpindi twin cities.</p>
+      </section>
+
+      <form class="controls" role="search" onsubmit="return false">
+        <label for="search">Search locations</label>
+        <input id="search" type="search" placeholder="Search a place or city…" autocomplete="off">
+        <label for="city-filter">City</label>
+        <select id="city-filter">
+          <option value="all">Both cities</option>
+          <option value="Islamabad">Islamabad</option>
+          <option value="Rawalpindi">Rawalpindi</option>
+        </select>
+        <label for="condition-filter">Weather condition</label>
+        <select id="condition-filter">
+          <option value="all">All conditions</option>
+          <option value="clear">Clear</option>
+          <option value="cloudy">Cloudy</option>
+          <option value="fog">Fog</option>
+          <option value="rain">Rain or drizzle</option>
+          <option value="showers">Showers</option>
+          <option value="snow">Snow</option>
+          <option value="thunderstorm">Thunderstorm</option>
+        </select>
+      </form>
+
+      <div class="results-heading">
+        <h2>Locations</h2>
+        <span id="result-count" aria-live="polite">Loading…</span>
+      </div>
+      <p id="status" class="status" role="status">Loading current weather…</p>
+      <ul id="place-list" class="place-list" aria-label="Weather by location"></ul>
+      <p class="data-credit">Weather: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a></p>
+    </aside>
+
+    <section class="map-section" aria-label="Interactive weather map">
+      <div id="map" role="application" aria-label="Map of current weather in Islamabad and Rawalpindi"></div>
+      <div class="map-note">Select a location marker for current conditions.</div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>
+    · Map tiles © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a> contributors
+    · Current conditions are model-based estimates, not local station observations.
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
